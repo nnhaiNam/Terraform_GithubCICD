@@ -10,7 +10,34 @@ env:
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
+
+
+
 jobs:
+
+  terraform-checkov:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Checkov
+        run: |
+          pip install checkov
+
+      - name: Run Checkov on Terraform code
+        working-directory: ./Terraform-VPC
+        run: |
+          checkov -d .
+        
+
+
   build-infra:
     name: terraform-ci-cd
     runs-on: ubuntu-latest
@@ -35,8 +62,8 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan
-        working-directory: ./Terraform-VPC
-        
+        working-directory: ./Terraform-VPC        
+   
       - name: Terraform Apply
         id: apply
         run: terraform apply --auto-approve
