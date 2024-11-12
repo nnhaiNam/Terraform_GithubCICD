@@ -10,7 +10,7 @@ cmd = <<-EOF
               sudo systemctl start nginx
               sudo systemctl enable nginx
               AZ=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
-              echo "<h1>Welcome to Terraform Nginx Web Server by HariNem</h1>" | sudo tee /usr/share/nginx/html/index.html  
+              echo "<h1>Welcome to Terraform Nginx Web Server by HariNemNem</h1>" | sudo tee /usr/share/nginx/html/index.html  
               echo "<p>Availability Zone: $AZ</p>" | sudo tee -a /usr/share/nginx/html/index.html
 
 EOF
