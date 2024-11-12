@@ -20,6 +20,7 @@ resource "aws_security_group" "sg" {
   }
 
   egress {
+    description = "Allow access internet to get data"
     from_port = 0
     to_port = 0
     protocol = -1

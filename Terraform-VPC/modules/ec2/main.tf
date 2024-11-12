@@ -9,6 +9,13 @@ resource "aws_instance" "web" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
   key_name = var.key_name
 
+  monitoring      = true 
+
+  metadata_options {
+    http_tokens = "required"  # Forces the use of IMDSv2 (IMDSv1 will be disabled)
+    http_endpoint = "enabled" # Enables the Instance Metadata Service
+  }
+
   tags = {
     Name = var.ec2_names[count.index]
   }
