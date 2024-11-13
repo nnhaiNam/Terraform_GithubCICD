@@ -13,7 +13,7 @@ module "sg" {
 
 module "ec2" {
   source = "./modules/ec2"
-  sg_id = module.sg.sg_id
+  sg_id = [module.sg.sg_id] # Passing as a list to match EC2 parameter requirements
   subnets = module.vpc.subnet_ids
   user_data = var.cmd
   key_name = var.key_name
