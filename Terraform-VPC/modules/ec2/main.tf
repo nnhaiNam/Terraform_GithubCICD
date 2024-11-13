@@ -2,9 +2,8 @@ resource "aws_instance" "web" {
   count=length(var.ec2_names)
   ami           = data.aws_ami.amazon-2.id
   instance_type = "t2.micro"
-  #security_groups = [var.vpc_security_group_ids]
-  #vpc_security_group_ids = [var.sg_id]
-  vpc_security_group_ids    = [var.vpc_security_group_ids]
+  vpc_security_group_ids = [module.sg.sg_id] 
+  //vpc_security_group_ids    = [var.vpc_security_group_ids]
   associate_public_ip_address = true
   subnet_id = var.subnets[count.index]
   user_data =  var.user_data
