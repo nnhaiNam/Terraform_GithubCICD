@@ -16,8 +16,8 @@ module "ec2" {
   subnets = module.vpc.subnet_ids
   user_data = var.cmd
   key_name = var.key_name
-  sg_id = module.sg.sg_id
-  
+  sg_id = module.sg.sg_id  
+
 }
 
 module "alb" {
