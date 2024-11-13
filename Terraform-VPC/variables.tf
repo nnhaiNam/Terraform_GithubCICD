@@ -26,3 +26,9 @@ variable "key_name" {
     description = "Key Name"
     type = string  
 }
+
+variable "sg_id" {
+    description = "ID Security Group"
+    type = string
+  
+}
