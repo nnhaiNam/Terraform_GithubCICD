@@ -8,8 +8,7 @@ resource "aws_instance" "web" {
   subnet_id = var.subnets[count.index]
   user_data =  var.user_data
   availability_zone = data.aws_availability_zones.available.names[count.index]
-  key_name = var.key_name
-  #security_groups = [var.sg_id]
+  key_name = var.key_name  
   
 
   monitoring      = true 
