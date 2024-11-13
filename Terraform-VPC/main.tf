@@ -16,7 +16,7 @@ module "ec2" {
   subnets = module.vpc.subnet_ids
   user_data = var.cmd
   key_name = var.key_name
-  vpc_security_group_ids = [module.sg.sg_id] 
+  vpc_security_group_ids = module.sg.sg_id
 
 }
 

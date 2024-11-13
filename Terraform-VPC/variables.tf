@@ -27,8 +27,3 @@ variable "key_name" {
     type = string  
 }
 
-variable "sg_id" {
-    description = "ID Security Group"
-    type = string
-  
-}
