@@ -1,6 +1,6 @@
 variable "sg_id" {
     description = "SG ID for EC2"
-    type = list(string) 
+    type = string 
 }
 
 variable "subnets" {
