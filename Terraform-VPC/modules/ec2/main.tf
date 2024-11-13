@@ -8,7 +8,8 @@ resource "aws_instance" "web" {
   user_data =  var.user_data
   availability_zone = data.aws_availability_zones.available.names[count.index]
   key_name = var.key_name
-  #security_groups = [var.sg_id]
+  security_groups = [var.sg_id]
+  
 
   monitoring      = true 
 
