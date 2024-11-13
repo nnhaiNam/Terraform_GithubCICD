@@ -1,4 +1,4 @@
-variable "sg_id" {
+variable "vpc_security_group_ids" {
     description = "SG ID for EC2"
     type = string 
 }

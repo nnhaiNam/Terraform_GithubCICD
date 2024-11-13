@@ -16,35 +16,35 @@ module "ec2" {
   subnets = module.vpc.subnet_ids
   user_data = var.cmd
   key_name = var.key_name
-  sg_id = module.sg.sg_id  
+  vpc_security_group_ids = [module.sg.sg_id] 
 
 }
 
-resource "aws_instance" "test" {
+# resource "aws_instance" "test" {
   
-  ami           = "ami-0fff1b9a61dec8a5f"
-  instance_type = "t2.micro"
+#   ami           = "ami-0fff1b9a61dec8a5f"
+#   instance_type = "t2.micro"
   
-  #vpc_security_group_ids = [var.sg_id]
-  vpc_security_group_ids    = [module.sg.sg_id]
-  associate_public_ip_address = true
-  subnet_id = module.vpc.subnet_ids[0]
+#   #vpc_security_group_ids = [var.sg_id]
+#   vpc_security_group_ids    = [module.sg.sg_id]
+#   associate_public_ip_address = true
+#   subnet_id = module.vpc.subnet_ids[0]
  
-  availability_zone = "us-east-1a"
-  key_name = var.key_name  
+#   availability_zone = "us-east-1a"
+#   key_name = var.key_name  
   
 
-  monitoring      = true 
+#   monitoring      = true 
 
-  metadata_options {
-    http_tokens = "required"  # Forces the use of IMDSv2 (IMDSv1 will be disabled)
-    http_endpoint = "enabled" # Enables the Instance Metadata Service
-  }
+#   metadata_options {
+#     http_tokens = "required"  # Forces the use of IMDSv2 (IMDSv1 will be disabled)
+#     http_endpoint = "enabled" # Enables the Instance Metadata Service
+#   }
 
-  tags = {
-    Name = "EC2 test"
-  }
-}
+#   tags = {
+#     Name = "EC2 test"
+#   }
+# }
 
 module "alb" {
   source = "./modules/alb"
